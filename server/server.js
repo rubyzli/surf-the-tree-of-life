@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const speciesRouter = require("./routes/species.router");
+const SpeciesModel = require("./db/species.model");
 
 const { MONGO_URL, PORT = 8080 } = process.env;
 

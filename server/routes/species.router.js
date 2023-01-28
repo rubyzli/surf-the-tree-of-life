@@ -10,4 +10,12 @@ speciesRouter.get("/", async (req, res) => {
 	return res.json(species);
 });
 
+speciesRouter.get('/search', async(req, res) => {
+	let searchQuery = req.query.search;
+	let searchedSpecies = await SpeciesModel.find({ name: { $regex: `^${searchQuery}`, $options: 'i'}})
+	res.json(searchedSpecies);
+})
+
+  
+
 module.exports = speciesRouter;
