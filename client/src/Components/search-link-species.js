@@ -8,6 +8,7 @@ const SearchList = ({list, updateSpecies}) => {
     const [comment, setComment] = useState()
 
     const handleClick = (id, item) => {
+        
         setExpandedItems({
             ...expandedItems,
             [id]: !expandedItems[id]
@@ -22,15 +23,17 @@ const SearchList = ({list, updateSpecies}) => {
         if(previouslyExpanded){
             item.comment = comment
             updateSpecies(item);
-            setComment()
-        } 
+        } else if(previouslyExpanded && item.comment === null){
+            item.comment = comment
+            updateSpecies(item);
+        }
     }
 
     const handleInput = (e) => {
         e.preventDefault();
         setComment(e.target.value)
     }
-
+    
     useEffect(() => {
     
     }, [])
