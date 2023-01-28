@@ -32,6 +32,7 @@ const populateSpecies = async () => {
 		_id: parseInt(node.id),
 		parent: parentBySpecies[node.id],
 		confidence: confidenceById[node.CONFIDENCE],
+		comment: null
 	}));
 
 	await speciesModel.create(...species);

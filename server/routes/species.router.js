@@ -16,6 +16,25 @@ speciesRouter.get('/search', async(req, res) => {
 	res.json(searchedSpecies);
 })
 
+speciesRouter.get("/:id", async (req, res) => {
+	const species = await SpeciesModel.findById(req.params.id)
+  	return res.json(species);
+})
+
+speciesRouter.patch('/:id', async ( req, res) => {
+	const species = req.body
+	console.log(species)
+	SpeciesModel.findByIdAndUpdate(req.params.id, species, {new: true }).then((equipment) => {
+		if(!equipment) {  
+		  return res.status(404).send(`equipment doesn't exist`)
+		}
+		console.log('species updated')
+		res.send(species)
+	  }).catch(error => {
+		res.status(500).send(error)
+	  })
+})
+
   
 
 module.exports = speciesRouter;
