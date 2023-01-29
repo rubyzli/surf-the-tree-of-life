@@ -1,4 +1,3 @@
-const { json } = require('body-parser');
 const {Router} = require('express');
 const InputSpeciesModel = require('../db/input.species.model');
 
@@ -18,6 +17,11 @@ InputSpeciesRouter.post("/", async (req, res, next) => {
     } catch(err) {
         return next(err);
     }
+})
+
+InputSpeciesRouter.delete("/:id", async (req, res) => {
+    let species = await InputSpeciesModel.findByIdAndDelete(req.params.id);
+    return res.send({'Deleted': species})
 })
 
 module.exports = InputSpeciesRouter;

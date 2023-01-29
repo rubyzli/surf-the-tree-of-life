@@ -5,6 +5,7 @@ import "./index.css";
 import PageHome from "./Pages/page-home";
 import reportWebVitals from "./reportWebVitals";
 import InputSpecies from "./Pages/page-input";
+import ShowInputSpecies from "./Pages/page-show-input";
 
 const router = createBrowserRouter([
 	{
@@ -16,6 +17,12 @@ const router = createBrowserRouter([
 	{
 		path: "/input",
 		element: <InputSpecies></InputSpecies>,
+
+		children: [],
+	}, 
+	{
+		path: "/show",
+		element: <ShowInputSpecies></ShowInputSpecies>,
 
 		children: [],
 	}
