@@ -6,7 +6,7 @@ const speciesRouter = new Router();
 speciesRouter.get("/", async (req, res) => {
 	const species = await SpeciesModel.find()
 		.limit(100)
-		.sort({ created: "asc" });
+		.sort({ name: "asc" });
 	return res.json(species);
 });
 

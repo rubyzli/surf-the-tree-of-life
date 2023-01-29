@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import PageHome from "./Pages/page-home";
 import reportWebVitals from "./reportWebVitals";
+import InputSpecies from "./Pages/page-input";
 
 const router = createBrowserRouter([
 	{
@@ -12,6 +13,12 @@ const router = createBrowserRouter([
 
 		children: [],
 	},
+	{
+		path: "/input",
+		element: <InputSpecies></InputSpecies>,
+
+		children: [],
+	}
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

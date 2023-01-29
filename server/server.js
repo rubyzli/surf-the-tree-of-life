@@ -3,7 +3,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const speciesRouter = require("./routes/species.router");
+const InputSpeciesRouter = require("./routes/input.species.router");
 const SpeciesModel = require("./db/species.model");
+const InputSpeciesModel = require("./db/input.species.model");
 
 const { MONGO_URL, PORT = 8080 } = process.env;
 
@@ -21,6 +23,7 @@ app.use(function (err, req, res, next) {
 	res.status(500).send("Something broke!");
 });
 app.use("/api/species", speciesRouter);
+app.use("/input", InputSpeciesRouter);
 app.use(function (req, res) {
 	res.status(200).send("server is working");
 });
