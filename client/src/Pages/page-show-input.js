@@ -28,7 +28,7 @@ const ShowInputSpecies = () => {
     return (
         <>
             {species && species.map((species, index) => {
-                return <li key={index}>{species.name}
+                return <li key={index}>{species.name}, {species.dangerlevel}
                 <button onClick={(e) => deleteSpecies(species._id)}>Delete</button>
                 </li>
             })}

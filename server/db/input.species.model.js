@@ -8,7 +8,8 @@ const InputSpeciesSchema = new Schema({
 	parent: Number,
 	confidence: String,
 	comment: String, 
-    description: String
+    description: String,
+	dangerlevel: String
 });
 
 module.exports = mongoose.model("InputSpecies", InputSpeciesSchema);

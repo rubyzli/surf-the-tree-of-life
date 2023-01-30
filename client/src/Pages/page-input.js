@@ -15,13 +15,20 @@ const postInputSpecies = (species) => {
         },
         body: JSON.stringify(species)
     }).then((res) => res.json())
+};
+
+const fetchDangerLevels = (dataSetter) => {
+    return fetch("http://localhost:8080/danger", {}).then((res) =>
+        res.json().then((data) => dataSetter(data)))
 }
 
 const InputSpecies = () => {
     const [species, setSpecies] = useState()
+    const [dangerLevels, setDangerLevels] = useState()
 
     useEffect(() => {
         fetchSpecies(setSpecies)
+        fetchDangerLevels(setDangerLevels)
     }, []);
 
     const onSubmit = (e) => {
@@ -44,6 +51,11 @@ const InputSpecies = () => {
                     </select></label>
                 <label>date <input name="date" type="date"></input></label>
                 <label>description <input name="description" type="text"></input></label>
+                <label>danger level <select name="dangerlevel">
+                    {dangerLevels && dangerLevels.map(element => {
+                        return <option value={element.name}>{element.name}</option>
+                    })}
+                    </select></label>
                 <button type="submit">Submit</button>
             </Form>
         </>
