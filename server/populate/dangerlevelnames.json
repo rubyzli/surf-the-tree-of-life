@@ -1,0 +1,6 @@
+[
+    { "name": "not dangerous", "level": 1 },
+    { "name": "dangerous", "level": 2 },
+    { "name": "very dangerous", "level": 3 },
+    { "name": "extremely dangerous", "level": 4 }
+  ]

@@ -3,8 +3,10 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const treeOfLifeGraph = require("./treeoflife.json");
+const dangerLevelsGraph = require("./dangerlevels.json");
 
 const speciesModel = require("../db/species.model");
+const dangerLevelsModel = require("../db/danger.levels.model");
 
 console.log(process.env.MONGO_URL);
 const mongoUrl = process.env.MONGO_URL;
@@ -39,10 +41,23 @@ const populateSpecies = async () => {
 	console.log("Species created");
 };
 
+const populateDangerLevels = async () => {
+	await dangerLevelsModel.deleteMany({});
+
+	const dangerLevels = dangerLevelsGraph.map(element => ({
+		name: element.name,
+		level: element.level
+	}));
+	
+	await dangerLevelsModel.create(...dangerLevels);
+	console.log("Danger levels created");
+}
+
 const main = async () => {
 	await mongoose.connect(mongoUrl);
 
 	await populateSpecies();
+	await populateDangerLevels();
 
 	await mongoose.disconnect();
 };
